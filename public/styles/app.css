@@ -13,3 +13,7 @@ body {
 .nav a:hover {
     color: #4C4C4D;
 }
+
+.contact-svg {
+    z-index: -100;
+}

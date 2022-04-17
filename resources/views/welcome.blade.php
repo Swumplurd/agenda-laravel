@@ -16,21 +16,42 @@
                         <a class="nav-link px-0" aria-current="page" href="/">agenda de contactos 📱</a>
                     </div>
                     <div class='d-flex'>
-                        <a class="nav-link" href="/">añadir categoria</a>
-                        <a class="nav-link" href="/">añadir contacto</a>
+                        <a class="nav-link" data-bs-toggle="modal" data-bs-target="#category_modal">agregar categoria</a>
+                        @include('includes.category_modal')
+                        <a class="nav-link" data-bs-toggle="modal" data-bs-target="#contact_modal">agregar contacto</a>
+                        @include('includes.contact_modal')
                     </div>
                 </nav>
             </div>
         </div>
+        <div class="row my-4">
+            <div class="col text-center">
+                <h1 class="display-3 fw-bold">Bienvenido a tu agenda personal</h1>                
+            </div>
+        </div>
     </div>
 
-    <div class="container">
+    <div class="container h-100">
         <div class="row">
-            <div class="col-6">
-                <h1 class="display-3 fw-bold">Bienvenido a tu agenda personal</h1>
-            </div>
-            <div class="col-6">
-                <img class="img-fluid" src="{{asset('./img/undraw_personal_email_re_4lx7.svg')}}" alt="contact-svg" srcset="">
+            <div class="col">
+                <table class="table table-secondary table-striped table-hover table-bordered table-sm table-responsive-sm">
+                    <thead>
+                        <tr>
+                            <th scope="col">nombre</th>
+                            <th scope="col">telefono</th>
+                            <th scope="col">email</th>
+                            <th scope="col">categoria</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Poada Ibañez Miguel Angel</td>
+                            <td>55555555</td>
+                            <td>mapiposi@gmail.com</td>
+                            <td>escuela</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
