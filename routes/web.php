@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [ContactosController::class, 'index'])->name('contactos.index');
+Route::post('/store', [ContactosController::class, 'store'])->name('contactos.store');
+Route::get('/edit/{id}', [ContactosController::class, 'edit'])->name('contactos.edit');
+Route::put('/update/{id}', [ContactosController::class, 'update'])->name('contactos.update');
+Route::get('/show/{id}', [ContactosController::class, 'show'])->name('contactos.show');
+Route::get('/destroy/{id}', [ContactosController::class, 'destroy'])->name('contactos.destroy');

@@ -16,9 +16,9 @@
                         <a class="nav-link px-0" aria-current="page" href="/">agenda de contactos 📱</a>
                     </div>
                     <div class='d-flex'>
-                        <a class="nav-link" data-bs-toggle="modal" data-bs-target="#category_modal">agregar categoria</a>
+                        <a class="nav-link" href="/" data-bs-toggle="modal" data-bs-target="#category_modal">agregar categoria</a>
                         @include('includes.category_modal')
-                        <a class="nav-link" data-bs-toggle="modal" data-bs-target="#contact_modal">agregar contacto</a>
+                        <a class="nav-link" href="/" data-bs-toggle="modal" data-bs-target="#contact_modal">agregar contacto</a>
                         @include('includes.contact_modal')
                     </div>
                 </nav>
@@ -30,7 +30,6 @@
             </div>
         </div>
     </div>
-
     <div class="container h-100">
         <div class="row">
             <div class="col">
@@ -44,12 +43,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Poada Ibañez Miguel Angel</td>
-                            <td>55555555</td>
-                            <td>mapiposi@gmail.com</td>
-                            <td>escuela</td>
-                        </tr>
+                        @foreach ($datos as $dato)
+                            <tr>
+                                <td scope="row">{{$dato->nombre}}</th>
+                                <td><a href="tel:{{$dato->telefono}}">{{$dato->telefono}}</a></th>
+                                <td><a href="mailto:{{$dato->email}}">{{$dato->email}}</a></th>
+                                <td>{{$dato->id_categoria}}</th>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
