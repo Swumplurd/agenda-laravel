@@ -35,7 +35,12 @@ class CategoriasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $categorias = new Categorias();
+        $categorias->nombre = $request->post('nombre');
+
+        $categorias->save();
+
+        return redirect()->route('contactos.index')->with('success', 'categoria agregada con exito');
     }
 
     /**

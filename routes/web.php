@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoriasController;
 use App\Http\Controllers\ContactosController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,7 +16,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [ContactosController::class, 'index'])->name('contactos.index');
-Route::post('/store', [ContactosController::class, 'store'])->name('contactos.store');
+Route::post('/contacto-store', [ContactosController::class, 'store'])->name('contactos.store');
+Route::post('/categoria-store', [CategoriasController::class, 'store'])->name('categorias.store');
 Route::get('/edit/{id}', [ContactosController::class, 'edit'])->name('contactos.edit');
 Route::put('/update/{id}', [ContactosController::class, 'update'])->name('contactos.update');
 Route::get('/show/{id}', [ContactosController::class, 'show'])->name('contactos.show');
