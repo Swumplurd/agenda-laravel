@@ -4,6 +4,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-6">
+                <h2 class="mx-3">Agrega una nueva categoria</h2>
                 <form action="{{route('categorias.store')}}" method="post">
                     @csrf
                     <div class="modal-body">
@@ -19,6 +20,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
+                        <a href="{{route('contactos.index')}}" class="btn btn-primary">Ir a contactos</a>
                         <button type="submit" class="btn btn-success align-self-end">
                             <i class="bi bi-person-plus-fill me-2"></i>Agregar categoria
                         </button>

@@ -12,24 +12,26 @@
                     <div class="mb-3">
                         <label for="nombre" class="form-label">Nombre</label>
                         <input type="text" class="form-control" id="nombre" aria-describedby="nombreHelp" name="nombre">
-                        <div id="nombreHelp" class="form-text">Ingresa tu nombre...</div>
+                        <div id="nombreHelp" class="form-text">Ingresa el nombre...</div>
                     </div>
                     <div class="mb-3">
                         <label for="telefono" class="form-label">Telefono</label>
                         <input type="text" class="form-control" id="telefono" aria-describedby="telefonoHelp" name="telefono">
-                        <div id="telefonoHelp" class="form-text">Ingresa tu telefono...</div>
+                        <div id="telefonoHelp" class="form-text">Ingresa el telefono...</div>
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
                         <input type="text" class="form-control" id="email" aria-describedby="emailHelp" name="email">
-                        <div id="emailHelp" class="form-text">Ingresa tu telefono...</div>
+                        <div id="emailHelp" class="form-text">Ingresa el email...</div>
                     </div>
                     <div class="mb-3">
-                        <select class="form-select" aria-label="Categorias" name="id_categoria">
+                        <label for="categoria" class="form-label">Categoria</label>
+                        <select class="form-select" aria-label="Categorias" id="categoria" name="id_categoria">
                             @foreach($categorias as $categoria)
                                 <option value="{{ $categoria->id }}">{{ $categoria->nombre }}</option>
                             @endforeach
                         </select>
+                        <div id="categoriaHelp" class="form-text">Ingresa la categoria...</div>
                     </div>
                 </div>
                 <div class="modal-footer">
