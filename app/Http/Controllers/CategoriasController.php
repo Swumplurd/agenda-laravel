@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categorias;
+use App\Models\ContactosListado;
 use Illuminate\Http\Request;
 
 class CategoriasController extends Controller
@@ -14,8 +15,8 @@ class CategoriasController extends Controller
      */
     public function index()
     {
-        $datos = Categorias::orderBy('nombre', 'desc');
-        return view('welcome', compact('datos'));
+        $categorias = Categorias::all();
+        return view('categorias', compact('categorias'));
     }
 
     /**
@@ -42,7 +43,7 @@ class CategoriasController extends Controller
 
         $categorias->save();
 
-        return redirect()->route('contactos.index')->with('success', 'categoria agregada con exito');
+        return redirect()->route('categorias.index')->with('success', 'categoria agregada con exito');
     }
 
     /**
@@ -62,9 +63,10 @@ class CategoriasController extends Controller
      * @param  \App\Models\Categorias  $categorias
      * @return \Illuminate\Http\Response
      */
-    public function edit(Categorias $categorias)
+    public function edit($id)
     {
-        //
+        $categorias = Categorias::find($id);
+        return view('categorias_edit', compact('categorias'));
     }
 
     /**
@@ -74,9 +76,13 @@ class CategoriasController extends Controller
      * @param  \App\Models\Categorias  $categorias
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Categorias $categorias)
+    public function update(Request $request, $id)
     {
-        //
+        $categorias = Categorias::find($id);
+        $categorias->nombre = $request->post('nombre');
+        $categorias->descripcion = $request->post('descripcion');
+        $categorias->save();
+        return redirect()->route('categorias.index');
     }
 
     /**
@@ -85,8 +91,10 @@ class CategoriasController extends Controller
      * @param  \App\Models\Categorias  $categorias
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Categorias $categorias)
+    public function destroy($id)
     {
-        //
+        $categorias = Categorias::find($id);
+        $categorias->delete();
+        return redirect()->route('categorias.index');
     }
 }
