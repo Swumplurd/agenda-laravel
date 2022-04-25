@@ -14,7 +14,8 @@ class CategoriasController extends Controller
      */
     public function index()
     {
-        //
+        $datos = Categorias::orderBy('nombre', 'desc');
+        return view('welcome', compact('datos'));
     }
 
     /**
@@ -37,6 +38,7 @@ class CategoriasController extends Controller
     {
         $categorias = new Categorias();
         $categorias->nombre = $request->post('nombre');
+        $categorias->descripcion = $request->post('descripcion');
 
         $categorias->save();
 

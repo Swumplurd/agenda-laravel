@@ -40,15 +40,22 @@
                             <th scope="col">telefono</th>
                             <th scope="col">email</th>
                             <th scope="col">categoria</th>
+                            <th scope="col">acciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($datos as $dato)
+                        @foreach ($listado as $dato)
                             <tr>
-                                <td scope="row">{{$dato->nombre}}</th>
-                                <td><a href="tel:{{$dato->telefono}}">{{$dato->telefono}}</a></th>
-                                <td><a href="mailto:{{$dato->email}}">{{$dato->email}}</a></th>
-                                <td>{{$dato->id_categoria}}</th>
+                                <td scope="row">{{$dato->nombre}}</td>
+                                <td><a href="tel:{{$dato->telefono}}">{{$dato->telefono}}</a></td>
+                                <td><a href="mailto:{{$dato->email}}">{{$dato->email}}</a></td>
+                                <td>{{$dato->nombre_categoria}}</td>
+                                <td>
+                                    <a href="{{route('contactos.edit', $dato->id)}}" class="btn btn-secondary">
+                                        ✏️
+                                    </a>
+                                    <a href="{{route('contactos.destroy', $dato->id)}}" class="btn btn-secondary">❌</a>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

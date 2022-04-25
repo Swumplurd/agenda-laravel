@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categorias;
 use App\Models\Contactos;
+use App\Models\ContactosListado;
 use Illuminate\Http\Request;
 
 class ContactosController extends Controller
@@ -15,7 +17,9 @@ class ContactosController extends Controller
     public function index()
     {
         $datos = Contactos::orderBy('nombre', 'desc')->paginate(3);
-        return view('welcome', compact('datos'));
+        $categorias = Categorias::all();
+        $listado = ContactosListado::all();
+        return view('welcome', ['datos' => $datos, 'categorias' => $categorias, 'listado' => $listado]);
     }
 
     /**
@@ -64,9 +68,12 @@ class ContactosController extends Controller
      * @param  \App\Models\Contactos  $contactos
      * @return \Illuminate\Http\Response
      */
-    public function edit(Contactos $contactos)
+    public function edit($id_contacto)
     {
-        //
+        $contacto = Contactos::find($id_contacto);
+        $categorias = Categorias::all();
+        
+        return view('actualizar', ['contacto' => $contacto, 'categorias' => $categorias]);
     }
 
     /**
@@ -76,9 +83,16 @@ class ContactosController extends Controller
      * @param  \App\Models\Contactos  $contactos
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Contactos $contactos)
+    public function update(Request $request, $id)
     {
-        //
+        $contacto = Contactos::find($id);
+        $contacto->id_categoria = $request->post('id_categoria');
+        $contacto->nombre = $request->post('nombre');
+        $contacto->telefono = $request->post('telefono');
+        $contacto->email = $request->post('email');
+        $contacto->save();
+
+        return redirect()->route('contactos.index');
     }
 
     /**
@@ -87,8 +101,10 @@ class ContactosController extends Controller
      * @param  \App\Models\Contactos  $contactos
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Contactos $contactos)
+    public function destroy($id)
     {
-        //
+        $contactos = Contactos::find($id);
+        $contactos->delete();
+        return redirect()->route('contactos.index');
     }
 }

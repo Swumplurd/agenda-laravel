@@ -11,7 +11,12 @@
                     <div class="mb-3">
                         <label for="nombre" class="form-label">nombre de la categoria</label>
                         <input type="text" class="form-control" id="nombre" aria-describedby="categoriaHelp" name="nombre">
-                        <div id="categoriaHelp" class="form-text">We'll never share your texts with anyone else.</div>
+                        <div id="categoriaHelp" class="form-text">Ingresa el nombre de la categoria...</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="descripcion" class="form-label">descripcion de la categoria</label>
+                        <textarea type="text" class="form-control" id="descripcion" aria-describedby="categoriaHelp" name="descripcion"></textarea>
+                        <div id="categoriaHelp" class="form-text">Ingresa la descripcion de la categoria...</div>
                     </div>
                 </div>
                 <div class="modal-footer">
